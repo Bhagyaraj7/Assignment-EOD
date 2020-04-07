@@ -1,0 +1,27 @@
+Ext.define('KitchenSink.store.Browsers', {
+    extend: 'Ext.data.Store',
+    alias: 'store.browsers',
+
+                   
+    fields: ['month', 'year', 'data1', 'data2'],
+
+    constructor: function(config) {
+        config = config || {};
+
+        config.data = [
+            { month: 'May', year: '2010' , data1: 50, data2: 150 },
+            { month: 'Octoher',year:'2010' ,  data1: 60, data2: 160 },
+            { month: 'March', year:'2011' , data1: 40, data2: 140 },
+            { month: 'August', year: '2011' ,data1: 55, data2: 110 },
+            { month: 'February', year: '2012', data1: 100, data2: 140 },
+            { month: 'July', year: '2012', data1: 90, data2: 150 },
+            { month: 'January', year: '2013', data1: 80, data2: 130 },
+            { month: 'june', year: '2013',data1: 30, data2: 40 },
+            { month: 'Decemeber',year: '2013', data1: 50, data2: 100 },
+            { month: 'May', year: '2014', data1: 60, data2: 100 }
+         ];
+
+        this.callParent([config]);
+    }
+
+});

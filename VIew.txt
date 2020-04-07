@@ -1,0 +1,84 @@
+/**
+ * Marked lines are multi-series lines displaying trends across multiple categories.
+ * Markers are placed at each point to clearly depict their position on the chart.
+ */
+Ext.define('KitchenSink.view.charts.line.Marked', {
+    extend: 'Ext.panel.Panel',
+    controller: 'line-marked',
+
+    width: 650,
+
+    items: [{
+        xtype: 'cartesian',
+        reference: 'chart',
+        width: '500%',
+        height: 200,
+        legend: {
+            type: 'sprite',
+            docked: 'right'
+        },
+        store: {
+            type: 'browsers'
+        },
+        axes: [{
+            type: 'numeric',
+            fields: ['data1', 'data2' ],
+            position: 'left',
+            grid: true,
+            minimum: 0,
+            renderer: 'onAxisLabelRender'
+        }, {
+            type: 'category',
+            fields: 'month',
+            position: 'bottom',
+            grid: true,
+            label: {
+                rotate: {
+                    degrees: -45
+                }
+            }
+        }],
+        series: [{
+            type: 'line',
+            xField: 'month',
+			xfield: 'year',
+            yField: 'data1',
+            marker: {
+                type: 'square',
+                animation: {
+                    duration: 200,
+                    easing: 'backOut'
+                }
+            },
+            highlightCfg: {
+                scaling: 2
+            },
+            tooltip: {
+                trackMouse: true,
+                renderer: 'onSeriesTooltipRender'
+            }
+        }, {
+            type: 'line',
+            xField: 'month',
+			xfield: 'year',
+            yField: 'data2',
+            marker: {
+                type: 'triangle',
+                animation: {
+                    duration: 200,
+                    easing: 'backOut'
+                }
+            },
+            highlightCfg: {
+                scaling: 2
+            },
+            tooltip: {
+                trackMouse: true,
+                renderer: 'onSeriesTooltipRender'
+            }
+        }, 
+            tooltip: {
+                trackMouse: true,
+                renderer: 'onSeriesTooltipRender'
+            }
+        }]
